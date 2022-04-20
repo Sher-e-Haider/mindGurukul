@@ -1,0 +1,26 @@
+###
+
+GET http://localhost:5000/api
+
+###
+POST http://localhost:5000/api
+Content-Type: application/json
+
+{
+    "title":"lelo",
+    "note":"lelo kya"
+}
+###
+DELETE http://localhost:5000/api/delete/623f5548dbaf1a2a3bca05d4
+
+
+###
+PATCH http://localhost:5000/api/update/623f5621db7426c880545160
+Content-Type: application/json
+
+{
+    "title":"jau",
+    "note":"what are i doing"
+}
+
+
