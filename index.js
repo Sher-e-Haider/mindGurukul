@@ -20,7 +20,7 @@ app.get('/',(req,res)=>{
 app.use('/api',Router)
 
 const PORT = process.env.PORT||5000
-mongoose.connect(process.env.MONGODB_URI,{              
+mongoose.connect(process.env.MONGODB_URI||'mongodb+srv://notesapp:notesapp123@cluster0.px5x2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{              
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>{
