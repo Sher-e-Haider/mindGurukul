@@ -1,7 +1,7 @@
 import UserSchema from '../models/noteModel.js'
 
 export const getPost = async(req,res)=>{
-    const user =  await UserSchema.find()
+    const user =  await UserSchema.find({})
     try {
         res.status(200).json(user)
     } catch (error) {
@@ -12,7 +12,6 @@ export const getPost = async(req,res)=>{
 export const createPost = async(req,res)=>{
     const post = req.body
     const newPost = await new UserSchema({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
-    //const user =  await new UserSchema(post)
     try {
        await newPost.save()
        res.status(201).json(newPost)
@@ -33,12 +32,22 @@ export const deletePost = async(req,res)=>{
 }
 
 export const updatePost = async(req,res)=>{
+      const id=req.params.id
+     try {
+         const user =  await UserSchema.findByIdAndUpdate(id,req.body,{new:true})
+        res.status(202).json({message:'updated'})
+     } catch (error) {
+         res.status(401).json({message:error})
+     }
+ }
+
+ export const getById = async(req,res)=>{
     const id=req.params.id
-    const {title,note}= req.body
     
      try {
-         const user =  await UserSchema.findByIdAndUpdate(id,{title:title,note:note},{new:true})
-        res.status(202).json({message:'updated'})
+         const user =  await UserSchema.findById(id);
+        
+        res.status(202).json({data:user})
      } catch (error) {
          res.status(401).json({message:error})
      }
