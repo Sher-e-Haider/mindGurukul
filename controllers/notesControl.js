@@ -45,10 +45,11 @@ export const updatePost = async(req,res)=>{
     const id=req.params.id
     
      try {
-         const user =  await UserSchema.findById(id);
-        
-        res.status(202).json({data:user})
+         const use =  await UserSchema.findById(id);
+         res.status(202).json({data:use})
      } catch (error) {
          res.status(401).json({message:error})
      }
  }
+
+ 
