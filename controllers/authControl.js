@@ -39,7 +39,7 @@ export const signup = async(req,res)=>{
      })
     // await newUser.save()
     res.send({
-        newUser,
+        result:newUser,
         token:generateToken(newUser),
         message:"User created successfully"
     })
